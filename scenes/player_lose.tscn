@@ -1,0 +1,145 @@
+[gd_scene load_steps=19 format=3 uid="uid://bpf4pmtgil2bh"]
+
+[ext_resource type="Texture2D" uid="uid://bvny5u6350jrs" path="res://assets/sprites/background/LoseScreen.png" id="1_0v8ma"]
+[ext_resource type="Script" uid="uid://cb2hqtg535okm" path="res://scripts/player_lose.gd" id="1_u2d21"]
+[ext_resource type="Texture2D" uid="uid://dkonqvu3da3e0" path="res://assets/sprites/background/DialogBubbleRightTail.png" id="2_7h6hi"]
+[ext_resource type="FontFile" uid="uid://bj3gbo6ub2o6a" path="res://assets/fonts/Connection.otf" id="4_4l2v5"]
+[ext_resource type="Texture2D" uid="uid://djxl1cafvtcew" path="res://assets/sprites/player/OpponentR1X5Left.png" id="4_gk62y"]
+[ext_resource type="Texture2D" uid="uid://bme0gpq5ky0hk" path="res://assets/sprites/player/OpponentCheering.png" id="5_jfldv"]
+[ext_resource type="AudioStream" uid="uid://b7yfptn2nlt7l" path="res://assets/audio/LoseMusic.mp3" id="6_gk62y"]
+[ext_resource type="Texture2D" uid="uid://5q7jy7y5l7pb" path="res://assets/sprites/background/GameplayBackground.jpeg" id="7_jfldv"]
+[ext_resource type="Texture2D" uid="uid://phrtfyj5mrtj" path="res://assets/sprites/buttons/menu.png" id="9_c4s7p"]
+[ext_resource type="AudioStream" uid="uid://dayu4w8s1oped" path="res://assets/audio/click.mp3" id="10_uisac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtl45"]
+content_margin_left = 80.0
+content_margin_top = 60.0
+content_margin_right = 15.0
+content_margin_bottom = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l2v5"]
+atlas = ExtResource("4_gk62y")
+region = Rect2(0, 0, 283, 507)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6my5"]
+atlas = ExtResource("5_jfldv")
+region = Rect2(0, 0, 293, 515)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4s7p"]
+atlas = ExtResource("5_jfldv")
+region = Rect2(586, 0, 293, 515)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uisac"]
+atlas = ExtResource("5_jfldv")
+region = Rect2(879, 0, 293, 515)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2d21"]
+atlas = ExtResource("5_jfldv")
+region = Rect2(586, 0, 293, 515)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk62y"]
+atlas = ExtResource("5_jfldv")
+region = Rect2(879, 0, 293, 515)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j73jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l2v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6my5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4s7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uisac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2d21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk62y")
+}],
+"loop": true,
+"name": &"cheering",
+"speed": 4.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u2d21")
+
+[node name="NickFault" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 651.0
+texture = ExtResource("1_0v8ma")
+stretch_mode = 5
+
+[node name="Bubble" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 153.0
+offset_right = 765.0
+offset_bottom = 420.0
+texture = ExtResource("2_7h6hi")
+
+[node name="tutor" type="Label" parent="Bubble"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -6.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.596078, 0, 1, 1)
+theme_override_fonts/font = ExtResource("4_4l2v5")
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vtl45")
+text = "This is all
+Nick's fault!
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="OpponentCheering" type="AnimatedSprite2D" parent="."]
+position = Vector2(356.733, 422.523)
+scale = Vector2(0.718549, 0.685348)
+sprite_frames = SubResource("SpriteFrames_j73jl")
+animation = &"cheering"
+frame_progress = 0.957224
+
+[node name="LoseMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gk62y")
+parameters/looping = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 5.0
+offset_right = 1167.0
+offset_bottom = 644.0
+texture = ExtResource("7_jfldv")
+expand_mode = 1
+
+[node name="MenuButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 546.0
+offset_right = 1172.0
+offset_bottom = 646.0
+texture_normal = ExtResource("9_c4s7p")
+stretch_mode = 3
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_uisac")
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

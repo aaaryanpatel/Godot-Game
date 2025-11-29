@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkk11kxndtwbk"
+path="res://.godot/imported/41. Von Kaiser - Intro.mp3-177bec11f3f8b585d03d105f7de98c85.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/41. Von Kaiser - Intro.mp3"
+dest_files=["res://.godot/imported/41. Von Kaiser - Intro.mp3-177bec11f3f8b585d03d105f7de98c85.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

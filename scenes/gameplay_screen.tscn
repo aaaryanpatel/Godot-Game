@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1u0blo1iaoru"]
+
+[ext_resource type="Script" uid="uid://m8maq37mhiq4" path="res://scripts/GameplayScreen.gd" id="1_gej26"]
+[ext_resource type="Texture2D" uid="uid://bese3w25he2ik" path="res://assets/sprites/background/GameBackground.png" id="2_mcs8y"]
+[ext_resource type="AudioStream" uid="uid://d1mf63og4ddgb" path="res://assets/audio/42. Von Kaiser - Fight.mp3" id="2_nl8x0"]
+[ext_resource type="PackedScene" uid="uid://cs8tsett4jqb3" path="res://scenes/player.tscn" id="4_skn3q"]
+[ext_resource type="PackedScene" uid="uid://bcnqi0wn7rvc1" path="res://scenes/opponent.tscn" id="5_157wf"]
+[ext_resource type="Texture2D" uid="uid://b0wqrro7m8pdt" path="res://assets/sprites/buttons/EnergyBarEmpty.png" id="6_cjr5t"]
+[ext_resource type="Script" uid="uid://bmefppmduhagr" path="res://scripts/PlayerHealthBar.gd" id="6_j70vx"]
+[ext_resource type="Texture2D" uid="uid://cswf6w6wmpy58" path="res://assets/sprites/buttons/EnergyBar.png" id="7_itntn"]
+[ext_resource type="Script" uid="uid://byitsva0kt783" path="res://scripts/OpponentHealthBar.gd" id="9_mcs8y"]
+[ext_resource type="FontFile" uid="uid://bj3gbo6ub2o6a" path="res://assets/fonts/Connection.otf" id="10_iniog"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gej26")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = 1116.0
+offset_bottom = 612.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mcs8y")
+expand_mode = 1
+
+[node name="GamePlayMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nl8x0")
+
+[node name="Opponent" parent="." instance=ExtResource("5_157wf")]
+texture_filter = 2
+position = Vector2(556, 531)
+
+[node name="Player" parent="." instance=ExtResource("4_skn3q")]
+texture_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 118.0
+offset_top = 15.0
+offset_right = 387.0
+offset_bottom = 161.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("6_cjr5t")
+texture_progress = ExtResource("7_itntn")
+script = ExtResource("6_j70vx")
+
+[node name="OpponentHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 780.0
+offset_top = 16.0
+offset_right = 1048.0
+offset_bottom = 159.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("6_cjr5t")
+texture_progress = ExtResource("7_itntn")
+script = ExtResource("9_mcs8y")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 416.0
+offset_top = 58.0
+offset_right = 749.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.772549, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_iniog")
+theme_override_font_sizes/font_size = 37
+text = "Vance vs Barclay"

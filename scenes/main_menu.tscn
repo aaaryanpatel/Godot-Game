@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://dafat5o5qvd6i"]
+
+[ext_resource type="Script" uid="uid://dg46omkswtc27" path="res://scripts/main_menu.gd" id="1_oa1go"]
+[ext_resource type="Texture2D" uid="uid://iueihvx66wsp" path="res://assets/sprites/background/BlankMenuScreen.png" id="2_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://ctcu1lf4pv6ld" path="res://assets/sprites/player/Hannah.png" id="4_5dd4i"]
+[ext_resource type="AudioStream" uid="uid://dayu4w8s1oped" path="res://assets/audio/click.mp3" id="4_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://br0yjmg1p8rr5" path="res://assets/sprites/buttons/tutorial.png" id="5_tbmy8"]
+[ext_resource type="AudioStream" uid="uid://c1s335ejbxtux" path="res://assets/audio/02. Profile Select.mp3" id="6_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://cptgibfcb6qcf" path="res://assets/sprites/buttons/play.png" id="6_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://b2vd43yxicx87" path="res://assets/sprites/buttons/credits.png" id="7_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://dgajb4vyttygg" path="res://assets/sprites/buttons/exit.png" id="8_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://5q7jy7y5l7pb" path="res://assets/sprites/background/GameplayBackground.jpeg" id="9_jk1qb"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 40.0
+script = ExtResource("1_oa1go")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = 1111.0
+offset_bottom = 612.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tbmy8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+z_index = -1
+layout_mode = 0
+offset_left = 6.0
+offset_right = 1155.0
+offset_bottom = 710.0
+texture = ExtResource("9_jk1qb")
+expand_mode = 1
+
+[node name="Hannah" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 377.0
+offset_right = 685.0
+offset_bottom = 666.0
+texture = ExtResource("4_5dd4i")
+expand_mode = 1
+
+[node name="MainMenuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5dd4i")
+parameters/looping = true
+
+[node name="ButtonClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jk1qb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 99.0
+offset_right = 1169.0
+offset_bottom = 557.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TutorialButton" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_tbmy8")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="GamePlayButton" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_jk1qb")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_5dd4i")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_lgwnu")
+ignore_texture_size = true
+stretch_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GamePlayButton" to="." method="_on_gameplay_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

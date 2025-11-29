@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1u0blo1iaoru"]
+
+[ext_resource type="Texture2D" uid="uid://c6838c0g10iqx" path="res://assets/sprites/background/game_play_background.webp" id="1_bd7gg"]
+[ext_resource type="Script" uid="uid://m8maq37mhiq4" path="res://scripts/GameplayScreen.gd" id="1_gej26"]
+[ext_resource type="AudioStream" uid="uid://d1mf63og4ddgb" path="res://assets/audio/42. Von Kaiser - Fight.mp3" id="2_nl8x0"]
+[ext_resource type="PackedScene" uid="uid://cs8tsett4jqb3" path="res://scenes/player.tscn" id="4_skn3q"]
+[ext_resource type="PackedScene" uid="uid://bcnqi0wn7rvc1" path="res://scenes/opponent.tscn" id="5_157wf"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gej26")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -47.0
+offset_right = 1173.0
+offset_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bd7gg")
+
+[node name="GamePlayMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nl8x0")
+
+[node name="Player" parent="." instance=ExtResource("4_skn3q")]
+
+[node name="Player2" parent="." instance=ExtResource("5_157wf")]
+position = Vector2(552, 532)

@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2qrdclm477h2"]
+
+[ext_resource type="Script" uid="uid://wrf7ey8l2ii2" path="res://scripts/IntroScreen.gd" id="1_q1oon"]
+[ext_resource type="Texture2D" uid="uid://iueihvx66wsp" path="res://assets/sprites/background/BlankMenuScreen.png" id="2_dc7ax"]
+[ext_resource type="Texture2D" uid="uid://20sgyjvnwnma" path="res://assets/sprites/buttons/start.png" id="3_dc7ax"]
+[ext_resource type="AudioStream" uid="uid://dkk11kxndtwbk" path="res://assets/audio/41. Von Kaiser - Intro.mp3" id="4_hukxe"]
+[ext_resource type="AudioStream" uid="uid://dayu4w8s1oped" path="res://assets/audio/click.mp3" id="5_g5fjw"]
+[ext_resource type="FontFile" uid="uid://bj3gbo6ub2o6a" path="res://assets/fonts/Connection.otf" id="6_g5fjw"]
+[ext_resource type="FontFile" uid="uid://dy1r3svg3iolo" path="res://assets/fonts/ConnectionBold.otf" id="7_dc7ax"]
+[ext_resource type="Texture2D" uid="uid://5q7jy7y5l7pb" path="res://assets/sprites/background/GameplayBackground.jpeg" id="8_14uot"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_q1oon")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 1110.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dc7ax")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+z_index = -1
+layout_mode = 0
+offset_left = -18.0
+offset_top = -1.0
+offset_right = 1187.0
+offset_bottom = 650.0
+texture = ExtResource("8_14uot")
+expand_mode = 1
+
+[node name="StartButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 954.0
+offset_top = 513.0
+offset_right = 1120.0
+offset_bottom = 572.0
+texture_normal = ExtResource("3_dc7ax")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="IntroMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hukxe")
+parameters/looping = true
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_g5fjw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 415.0
+offset_right = 831.0
+offset_bottom = 590.0
+vertical_scroll_mode = 3
+
+[node name="IntroTexts" type="RichTextLabel" parent="ScrollContainer"]
+custom_minimum_size = Vector2(350, 750)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_g5fjw")
+theme_override_fonts/bold_font = ExtResource("7_dc7ax")
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+
+[center]Everyone dreams of the perfect office — a window seat, the best view.
+
+But in this school, you don’t get the dream office… [b]you fight for it![/b]
+
+Welcome to the Battle of the BIS Instructors — where colleagues settle their turf wars in the boxing ring.
+
+Step into the ring and challenge the Boss in a climactic showdown to claim the best office spot once and for all.
+
+🥊🥊🥊 Let’s fight for that dream office! Good luck![/center]
+
+
+
+
+
+
+
+
+
+
+
+[center] Press Start to Play. [/center]"
+scroll_active = false
+autowrap_mode = 2
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

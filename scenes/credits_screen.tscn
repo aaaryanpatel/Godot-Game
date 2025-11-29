@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://lqgktgjeb5wh"]
+
+[ext_resource type="Script" uid="uid://cvltklryeefw5" path="res://scripts/CreditsScreen.gd" id="1_wdjou"]
+[ext_resource type="Texture2D" uid="uid://b186jtv4havf7" path="res://assets/sprites/background/CreditsBackground.png" id="2_wdjou"]
+[ext_resource type="Texture2D" uid="uid://phrtfyj5mrtj" path="res://assets/sprites/buttons/menu.png" id="3_65ouw"]
+[ext_resource type="AudioStream" uid="uid://dkk11kxndtwbk" path="res://assets/audio/41. Von Kaiser - Intro.mp3" id="4_ie4wh"]
+[ext_resource type="AudioStream" uid="uid://dayu4w8s1oped" path="res://assets/audio/click.mp3" id="5_ao64o"]
+[ext_resource type="FontFile" uid="uid://bj3gbo6ub2o6a" path="res://assets/fonts/Connection.otf" id="6_65ouw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wdjou")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -388.0
+offset_top = 4.0
+offset_right = 716.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wdjou")
+expand_mode = 1
+
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 522.0
+offset_right = 1062.0
+offset_bottom = 612.0
+texture_normal = ExtResource("3_65ouw")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="IntroMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ie4wh")
+parameters/looping = true
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ao64o")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 133.0
+offset_right = 1192.0
+offset_bottom = 433.0
+vertical_scroll_mode = 3
+
+[node name="IntroTexts" type="RichTextLabel" parent="ScrollContainer"]
+custom_minimum_size = Vector2(350, 900)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_65ouw")
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+[center] [b] PROJECT CREDITS [/b]
+
+[b]Project Sponsors [/b]
+
+Michael Vance and Rayhan Islam
+
+[b]Cartoon Characters [/b]
+
+Player: Michael Vance
+
+Opponent: Michael Barclay
+
+Coach: Hannah Kopytko
+
+[b] Development Team [/b]
+
+Project Manager: Thang Le
+
+Artwork: Heather Rittwage
+
+Project Analyst: David Onuegbu
+
+Programmers: Aryan Patel, Thang Le, David Onuegbu [/center]
+
+
+
+
+
+
+
+
+
+
+[center]THANK YOU![/center]"
+scroll_active = false
+autowrap_mode = 2
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
